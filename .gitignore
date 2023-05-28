@@ -1,1 +1,8 @@
 *.parquet
+_course_repo-mlops-zoomcamp/
+linkedinPosts
+*mlruns/
+*models/
+*data/
+*.ipynb_checkpoints/
+*.db
