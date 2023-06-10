@@ -125,7 +125,7 @@ def train_best_model(
     return None
 
 
-@task
+@flow
 def example_email_send_message_flow(email_addresses: List[str]):
     email_server_credentials = EmailServerCredentials.load("email-from-oshan-gmail")
     for email_address in email_addresses:
