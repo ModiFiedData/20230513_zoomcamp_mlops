@@ -2,4 +2,4 @@ deployments:
 - name: taxi_pred3_5
   entrypoint: homework/lesson3/3.5/orchestrate_log_artifact.py:main_flow_artifact
   work_pool:
-    name: mlops_3_4_hw
+    name: mlops_prefect_cloud_experiment

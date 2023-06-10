@@ -11,7 +11,7 @@ import xgboost as xgb
 from prefect import flow, task
 from prefect.artifacts import create_markdown_artifact
 from datetime import date
-
+from prefect_email import EmailServerCredentials
 
 @task(retries=3, retry_delay_seconds=2)
 def read_data(filename: str) -> pd.DataFrame:
@@ -131,6 +131,7 @@ def main_flow_artifact(
 ) -> None:
     """The main training pipeline"""
 
+    email_credentials_block = EmailServerCredentials.load("email-from-oshan-gmail")
     # MLflow settings
     mlflow.set_tracking_uri("sqlite:///mlflow.db")
     mlflow.set_experiment("nyc-taxi-experiment")
