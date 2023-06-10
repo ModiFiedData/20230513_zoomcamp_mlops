@@ -11,7 +11,7 @@ import xgboost as xgb
 from prefect import flow, task
 from prefect.artifacts import create_markdown_artifact
 from datetime import date
-from prefect_email import EmailServerCredentials
+from prefect_email import EmailServerCredentials, email_send_message
 
 @task(retries=3, retry_delay_seconds=2)
 def read_data(filename: str) -> pd.DataFrame:
@@ -124,6 +124,17 @@ def train_best_model(
     return None
 
 
+@task
+def example_email_send_message_flow(email_addresses: List[str]):
+    email_server_credentials = EmailServerCredentials.load("email-from-oshan-gmail")
+    for email_address in email_addresses:
+        subject = email_send_message.with_options(name=f"email {email_address}").submit(
+            email_server_credentials=email_server_credentials,
+            subject="Example Flow Notification using Gmail",
+            msg="This proves email_send_message works!",
+            email_to=email_address,
+        )
+
 @flow
 def main_flow_artifact(
     train_path: str = "./homework/lesson3/input_data/green_tripdata_2023-02.parquet",
@@ -131,7 +142,6 @@ def main_flow_artifact(
 ) -> None:
     """The main training pipeline"""
 
-    email_credentials_block = EmailServerCredentials.load("email-from-oshan-gmail")
     # MLflow settings
     mlflow.set_tracking_uri("sqlite:///mlflow.db")
     mlflow.set_experiment("nyc-taxi-experiment")
@@ -145,6 +155,9 @@ def main_flow_artifact(
 
     # Train
     train_best_model(X_train, X_val, y_train, y_val, dv)
+
+    # send email
+    example_email_send_message_flow(email_addresses=['modi.oshan@gmail.com'])
 
 
 if __name__ == "__main__":
