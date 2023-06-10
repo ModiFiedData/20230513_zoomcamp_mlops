@@ -1,10 +1,11 @@
-*.parquet
+# *.parquet
 *_course_repo-mlops-zoomcamp/
 linkedinPosts
 *mlruns/
 *models/
-*data/
+data/
 *.ipynb_checkpoints/
 *.db
 *output/
 *mlartifacts/
+03-orchestration/
