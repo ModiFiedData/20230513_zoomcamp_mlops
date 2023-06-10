@@ -12,6 +12,7 @@ from prefect import flow, task
 from prefect.artifacts import create_markdown_artifact
 from datetime import date
 
+
 @task(retries=3, retry_delay_seconds=2)
 def read_data(filename: str) -> pd.DataFrame:
     """Read data into DataFrame"""
@@ -117,14 +118,16 @@ def train_best_model(
         mlflow.log_artifact("models/preprocessor.b", artifact_path="preprocessor")
 
         mlflow.xgboost.log_model(booster, artifact_path="models_mlflow")
-        create_markdown_artifact(key = "duration-markdown-report", markdown=markdown_artifact)
+        create_markdown_artifact(
+            key="duration-markdown-report", markdown=markdown_artifact
+        )
     return None
 
 
 @flow
 def main_flow_artifact(
-    train_path: str = "./homework/lesson3/input_data/green_tripdata_2023-01.parquet",
-    val_path: str = "./homework/lesson3/input_data/green_tripdata_2023-02.parquet",
+    train_path: str = "./homework/lesson3/input_data/green_tripdata_2023-02.parquet",
+    val_path: str = "./homework/lesson3/input_data/green_tripdata_2023-03.parquet",
 ) -> None:
     """The main training pipeline"""
 
