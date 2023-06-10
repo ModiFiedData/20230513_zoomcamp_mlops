@@ -157,7 +157,7 @@ def main_flow_artifact(
     train_best_model(X_train, X_val, y_train, y_val, dv)
 
     # send email
-    example_email_send_message_flow(email_addresses=['modi.oshan@gmail.com'])
+    example_email_send_message_flow(email_addresses=['modi.oshan@gmail.com','omodi.gdrive1@gmail.com'])
 
 
 if __name__ == "__main__":
