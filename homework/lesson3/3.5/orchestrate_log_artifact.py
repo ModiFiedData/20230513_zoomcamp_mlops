@@ -125,11 +125,10 @@ def train_best_model(
     return None
 
 
-@flow
-def example_email_send_message_flow(email_addresses: List[str]):
-    email_server_credentials = EmailServerCredentials.load("email-from-oshan-gmail")
+def example_email_send_message_flow(email_addresses):
+    email_server_credentials = EmailServerCredentials.load("gmail-oshan-email-cred-block")
     for email_address in email_addresses:
-        subject = email_send_message.with_options(name=f"email {email_address}").submit(
+        email_send_message(
             email_server_credentials=email_server_credentials,
             subject="Example Flow Notification using Gmail",
             msg="This proves email_send_message works!",
