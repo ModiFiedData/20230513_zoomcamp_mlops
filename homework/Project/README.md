@@ -1,37 +1,13 @@
-# Let me suggest an Anime for you
+# Car Price Predictor
 
-
-## Data Description
-
+## About Dataset
 
 ### Context
 
-This data set contains information on user preference data from 73,516 users on 12,294 anime. Each user is able to add anime to their completed list and give it a rating and this data set is a compilation of those ratings.
+Craigslist is the world's largest collection of used vehicles for sale, yet it's very difficult to collect all of them in the same place. I built a scraper for a school project and expanded upon it later to create this dataset which includes every used vehicle entry within the United States on Craigslist.
 
 ### Content
 
-1. **Anime.csv**
-
-- anime_id - myanimelist.net's unique id identifying an anime.
-- name - full name of anime.
-- genre - comma separated list of genres for this anime.
-- type - movie, TV, OVA, etc.
-- episodes - how many episodes in this show. (1 if movie).
-- rating - average rating out of 10 for this anime.
-- members - number of community members that are in this anime's
-"group".
+This data is scraped every few months, it contains most all relevant information that Craigslist provides on car sales including columns like price, condition, manufacturer, latitude/longitude, and 18 other categories. For ML projects, consider feature engineering on location columns such as long/lat. For previous listings, check older versions of the dataset.
 
 
-2. **Rating.csv**
-
-- user_id - non identifiable randomly generated user id.
-- anime_id - the anime that this user has rated.
-- rating - rating out of 10 this user has assigned (-1 if the user watched it but didn't assign a rating).
-
-### Acknowledgements
-
-Thanks to myanimelist.net API for providing anime data and user ratings.
-
-### Inspiration
-
-Building a better anime recommendation system based only on user viewing history.

@@ -6,10 +6,12 @@ name = "pypi"
 [packages]
 pandas = "*"
 scikit-learn = "*"
+xgboost = "*"
 
 [dev-packages]
 ipython = "*"
 jupyter = "*"
+pyarrow = "*"
 
 [requires]
 python_version = "3.9"
