@@ -7,6 +7,8 @@ name = "pypi"
 pandas = "*"
 scikit-learn = "*"
 xgboost = "*"
+matplotlib = "*"
+jupyter = "*"
 
 [dev-packages]
 ipython = "*"
