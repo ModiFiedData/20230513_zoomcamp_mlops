@@ -9,6 +9,8 @@ scikit-learn = "*"
 xgboost = "*"
 matplotlib = "*"
 jupyter = "*"
+mlflow = "*"
+hyperopt = "*"
 
 [dev-packages]
 ipython = "*"
