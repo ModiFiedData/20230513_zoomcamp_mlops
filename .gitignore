@@ -9,4 +9,5 @@ data/
 *output/
 *mlartifacts/
 03-orchestration/
-*.DS_Store
+*.DS_Store*
+
